@@ -5,6 +5,13 @@ import view from "@fastify/view";
 import { Liquid } from "liquidjs";
 import fastifyStatic from "@fastify/static";
 
+// TODO: move this to a declaration file
+declare module "fastify" {
+  interface FastifyReply {
+    getTemplatePath: (template?: string) => string;
+  }
+}
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isProd = process.env.NODE_ENV === "production";
 
@@ -14,6 +21,8 @@ const getTemplatePath = (template: string = "") =>
   isProd
     ? path.join("dist/client/templates", template)
     : path.join("templates", template);
+
+fastify.decorateReply("getTemplatePath", getTemplatePath);
 
 fastify.register(view, {
   engine: {
@@ -55,7 +64,7 @@ fastify.get("/", async (request, reply) => {
     ];
 
     let template: string | undefined = await fastify.view(
-      getTemplatePath("blog.html"),
+      reply.getTemplatePath("blog.html"),
       { initialState }
     );
 
