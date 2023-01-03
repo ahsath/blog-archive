@@ -3,8 +3,6 @@
 </template>
 
 <script lang="ts" setup>
-import Post from "./Post.vue";
-
 interface Props {
   posts: [
     {
