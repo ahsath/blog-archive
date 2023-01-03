@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon -x ts-node server.ts",
-    "build": "pnpm build:client && pnpm run build:server && pnpm prod",
+    "build": "pnpm build:client && pnpm build:server && pnpm prod",
     "prod": "NODE_OPTIONS=\"--loader ts-node/esm\" NODE_ENV=production node server.ts",
     "build:client": "vite build --outDir dist/client --ssrManifest",
     "build:server": "vite build --outDir dist/server --ssr src/entry-server.ts"
