@@ -4,6 +4,7 @@ import Fastify from "fastify";
 import view from "@fastify/view";
 import { Liquid } from "liquidjs";
 import fastifyStatic from "@fastify/static";
+import fastifyVite from "./plugins/fastify-vite.js";
 
 // TODO: move this to a declaration file
 declare module "fastify" {
@@ -33,16 +34,16 @@ fastify.register(view, {
   },
 });
 
+fastify.register(fastifyVite);
+
 if (isProd) {
   // TODO: add helmet, env vars, etag, compression
   fastify.register(fastifyStatic, {
     root: path.join(__dirname, "dist/client"),
-    prefix: "/dist/client/",
     prefixAvoidTrailingSlash: true,
   });
 } else {
   fastify.register(import("@fastify/middie"));
-  fastify.register(import("./plugins/fastify-vite.js"));
 }
 
 fastify.get("/", async (request, reply) => {
