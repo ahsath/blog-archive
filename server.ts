@@ -34,8 +34,6 @@ fastify.register(view, {
   },
 });
 
-fastify.register(fastifyVite);
-
 if (isProd) {
   // TODO: add helmet, env vars, etag, compression
   fastify.register(fastifyStatic, {
@@ -46,6 +44,8 @@ if (isProd) {
   // TODO: add documentation for this
   fastify.register(import("@fastify/middie"));
 }
+
+fastify.register(fastifyVite);
 
 fastify.get("/", async (request, reply) => {
   try {
