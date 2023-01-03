@@ -43,6 +43,7 @@ if (isProd) {
     prefixAvoidTrailingSlash: true,
   });
 } else {
+  // TODO: add documentation for this
   fastify.register(import("@fastify/middie"));
 }
 

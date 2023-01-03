@@ -79,6 +79,8 @@ async function render(opts: RenderOpts) {
 
 const fastifyVite: FastifyPluginAsync = async (fastify) => {
   if (!isProd) {
+    // use vite's connect instance as middleware
+    // https://vitejs.dev/guide/ssr.html#setting-up-the-dev-server
     fastify.use(vite.middlewares);
   }
   fastify.decorateReply("render", render);
