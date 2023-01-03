@@ -10,10 +10,15 @@ const isProd = process.env.NODE_ENV === "production";
 
 const fastify = Fastify({ logger: true });
 
+const getTemplatePath = (template: string = "") =>
+  isProd
+    ? path.join("dist/client/templates", template)
+    : path.join("templates", template);
+
 fastify.register(view, {
   engine: {
     liquid: new Liquid({
-      root: ["templates", "templates/layouts", "templates/partials"],
+      root: getTemplatePath(),
       extname: ".html",
     }),
   },
@@ -49,9 +54,8 @@ fastify.get("/", async (request, reply) => {
       },
     ];
 
-    // '/dist/client/templates/layouts/blog.html'
     let template: string | undefined = await fastify.view(
-      "/templates/blog.html",
+      getTemplatePath("blog.html"),
       { initialState }
     );
 
