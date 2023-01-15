@@ -46,6 +46,7 @@ let apps: NodeListOf<HTMLElement>;
 async function render(opts: RenderOpts) {
   try {
     if (isProd) {
+      // @ts-ignore
       render$ = (await import("../dist/server/entry-server.js")).render;
       template = opts.template;
     } else {
