@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [vue(), Components()],
   build: {
     rollupOptions: {
-      input: ["templates/base.html", "templates/blog.html"], // TODO: dinamically generate this
+      input: ["templates/base.html", "templates/counter.html"], // TODO: dinamically generate this
     },
   },
 });
