@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM node:18-slim
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package.json .
 COPY pnpm-lock.yaml .
@@ -13,4 +13,4 @@ RUN pnpm build
 
 EXPOSE 3000
 
-CMD ["pnpm start"]
+CMD ["pnpm", "start"]
