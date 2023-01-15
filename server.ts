@@ -23,7 +23,7 @@ const getTemplatePath = (template: string = "") =>
     ? path.join("dist/client/templates", template)
     : path.join("templates", template);
 
-fastify.decorateReply("getTemplatePath", getTemplatePath);
+fastify.decorateReply(getTemplatePath.name, getTemplatePath);
 
 fastify.register(view, {
   engine: {
@@ -48,25 +48,11 @@ if (isProd) {
 fastify.register(fastifyVite);
 
 fastify.get("/", async (request, reply) => {
-  try {
-    const initialState = [
-      {
-        id: "posts",
-        props: {
-          posts: [
-            { id: "1", title: "testing the waters", image: "an image link" },
-            {
-              id: "2",
-              title: "Avatar: The Way of the Water",
-              image: "hero image",
-            },
-          ],
-        },
-      },
-    ];
+  const initialState = [{ id: "counter", props: { count: 24 } }];
 
+  try {
     let template: string | undefined = await fastify.view(
-      reply.getTemplatePath("blog.html"),
+      reply.getTemplatePath("counter.html"),
       { initialState }
     );
 
