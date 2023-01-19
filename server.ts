@@ -23,8 +23,7 @@ const getTemplatePath = (template: string = "") =>
     ? path.join("dist/client/templates", template)
     : path.join("templates", template);
 
-fastify.decorateReply(getTemplatePath.name, getTemplatePath);
-
+// plugins (from the Fastify ecosystem)
 fastify.register(view, {
   engine: {
     liquid: new Liquid({
@@ -45,14 +44,21 @@ if (isProd) {
   fastify.register(import("@fastify/middie"));
 }
 
+// your plugins (your custom plugins)
 fastify.register(fastifyVite);
 
+// decorators
+fastify.decorateReply(getTemplatePath.name, getTemplatePath);
+
+// hooks
+
+// your services
 fastify.get("/", async (request, reply) => {
   const initialState = [{ id: "counter", props: { count: 24 } }];
 
   try {
     let template: string | undefined = await fastify.view(
-      reply.getTemplatePath("counter.html"),
+      reply.getTemplatePath("index.html"),
       { initialState }
     );
 
