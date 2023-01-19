@@ -1,5 +1,5 @@
 import { createApp } from "./main";
-import "./style.css";
+import "./assets/css/main.css";
 
 declare global {
   interface Window {
