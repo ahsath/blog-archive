@@ -6,13 +6,6 @@ import { Liquid } from "liquidjs";
 import fastifyStatic from "@fastify/static";
 import fastifyVite from "./plugins/fastify-vite.js";
 
-// TODO: move this to a declaration file
-declare module "fastify" {
-  interface FastifyReply {
-    getTemplatePath: (template?: string) => string;
-  }
-}
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isProd = process.env.NODE_ENV === "production";
 

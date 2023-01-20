@@ -1,14 +1,5 @@
 import { createApp } from "./main";
-import "./assets/css/main.css";
-
-declare global {
-  interface Window {
-    __PRELOADED_STATE__?: {
-      id: string;
-      props: Record<string, unknown>;
-    }[];
-  }
-}
+import "./assets/css/theme.css";
 
 const apps = document.querySelectorAll("[data-ssr]");
 
@@ -18,7 +9,7 @@ for (const app of apps as NodeListOf<HTMLElement>) {
       (state) => state.id === app.dataset.ssr
     );
 
-    createApp(app.dataset.ssrComponent as string, state?.props).mount(app);
+    createApp(app.dataset.ssrComponent, state?.props).mount(app);
   }
 }
 
