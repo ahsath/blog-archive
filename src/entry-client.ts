@@ -3,8 +3,8 @@ import "./assets/css/theme.css";
 
 const apps = document.querySelectorAll("[data-ssr]");
 
-for (const app of apps as NodeListOf<HTMLElement>) {
-  if (app) {
+if (!!apps.length) {
+  for (const app of apps as NodeListOf<HTMLElement>) {
     const state = window.__PRELOADED_STATE__?.find(
       (state) => state.id === app.dataset.ssr
     );
