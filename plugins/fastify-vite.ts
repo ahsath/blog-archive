@@ -9,7 +9,7 @@ const isProd = process.env.NODE_ENV === "production";
 export interface RenderOpts {
   url: string;
   template: string;
-  initialState: {
+  initialState?: {
     id: string;
     props: Record<string, unknown>;
   }[];
@@ -45,9 +45,9 @@ async function render(opts: RenderOpts) {
     document = dom.window.document;
     apps = document.querySelectorAll("[data-ssr]");
 
-    for (const app of apps) {
-      if (app) {
-        const state = opts.initialState.find(
+    if (!!apps.length) {
+      for (let app of apps) {
+        const state = opts.initialState?.find(
           (state) => state.id === app.dataset.ssr
         );
 
