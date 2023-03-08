@@ -25,10 +25,7 @@ if (!isProd) {
 }
 
 let template = "";
-let render$: Render = async () => "";
-let dom: JSDOM;
-let document: Document;
-let apps: NodeListOf<HTMLElement>;
+let render$: Render;
 
 async function render(opts: RenderOpts) {
   try {
@@ -41,17 +38,24 @@ async function render(opts: RenderOpts) {
       template = await vite.transformIndexHtml(opts.url, opts.template);
     }
 
-    dom = new JSDOM(template);
-    document = dom.window.document;
-    apps = document.querySelectorAll("[data-ssr]");
+    const dom = new JSDOM(template);
+    const document = dom.window.document;
+    const apps = document.querySelectorAll("[data-ssr]") as NodeListOf<HTMLElement>;
 
     if (!!apps.length) {
       for (let app of apps) {
-        const state = opts.initialState?.find(
-          (state) => state.id === app.dataset.ssr
-        );
+        const state = opts.initialState?.find((state) => state.id === app.dataset.ssr);
 
-        app.innerHTML = await render$(app.dataset.ssrComponent, state?.props);
+        const { html, teleports } = await render$(app.dataset.ssrComponent, state?.props);
+
+        app.innerHTML = html;
+
+        if (teleports) {
+          for (const selector in teleports) {
+            const teleport = document.querySelector(selector) as Element;
+            teleport.innerHTML = teleports[selector];
+          }
+        }
       }
     }
 

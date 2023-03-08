@@ -12,9 +12,7 @@ const isProd = process.env.NODE_ENV === "production";
 const fastify = Fastify({ logger: true });
 
 const getTemplatePath = (template: string = "") =>
-  isProd
-    ? path.join("dist/client/templates", template)
-    : path.join("templates", template);
+  isProd ? path.join("dist/client/templates", template) : path.join("templates", template);
 
 // plugins (from the Fastify ecosystem)
 fastify.register(view, {
