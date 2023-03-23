@@ -2,17 +2,14 @@ import path from "path";
 import { fileURLToPath } from "url";
 import Fastify from "fastify";
 import view from "@fastify/view";
-import { Liquid } from "liquidjs";
 import fastifyStatic from "@fastify/static";
+import { Liquid } from "liquidjs";
 import fastifyVite from "./plugins/fastify-vite.js";
+import { PROD } from "./constants/index.js";
+import { getTemplatePath } from "./decorators/index.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const isProd = process.env.NODE_ENV === "production";
 
-const fastify = Fastify({ logger: true });
-
-const getTemplatePath = (template: string = "") =>
-  isProd ? path.join("dist/client/templates", template) : path.join("templates", template);
 
 // plugins (from the Fastify ecosystem)
 fastify.register(view, {
@@ -24,7 +21,7 @@ fastify.register(view, {
   },
 });
 
-if (isProd) {
+if (PROD) {
   // TODO: add helmet, env vars, etag, compression
   fastify.register(fastifyStatic, {
     root: path.join(__dirname, "dist/client"),
@@ -64,6 +61,7 @@ fastify.get("/", async (request, reply) => {
     console.error(e);
   }
 });
+fastify.decorate(getTemplatePath.name, getTemplatePath);
 
 try {
   await fastify.listen({ port: 3000, host: "0.0.0.0" });

@@ -1,7 +1,8 @@
-import { RenderOpts } from "./plugins/fastify-vite";
+import type { RenderOpts } from "../plugins/fastify-vite";
+import type { Data } from "../src/main";
 
 declare module "fastify" {
-  interface FastifyReply {
+  interface FastifyInstance {
     render: (opts: RenderOpts) => Promise<string | undefined>;
     getTemplatePath: (template?: string) => string;
   }
@@ -14,8 +15,8 @@ declare global {
 
   interface Window {
     __PRELOADED_STATE__?: {
-      id: string;
-      props: Record<string, unknown>;
+      component: string;
+      data: Data;
     }[];
   }
 }

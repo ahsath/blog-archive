@@ -3,6 +3,7 @@ import { JSDOM } from "jsdom";
 import { FastifyPluginAsync } from "fastify";
 import fp from "fastify-plugin";
 import { Render } from "../src/entry-server";
+import { Data } from "../src/main";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -10,8 +11,8 @@ export interface RenderOpts {
   url: string;
   template: string;
   initialState?: {
-    id: string;
-    props: Record<string, unknown>;
+    component: string;
+    data: Data;
   }[];
 }
 
@@ -40,13 +41,15 @@ async function render(opts: RenderOpts) {
 
     const dom = new JSDOM(template);
     const document = dom.window.document;
-    const apps = document.querySelectorAll("[data-ssr]") as NodeListOf<HTMLElement>;
+    const apps = document.querySelectorAll("[data-ssr-component]") as NodeListOf<HTMLElement>;
 
     if (!!apps.length) {
       for (let app of apps) {
-        const state = opts.initialState?.find((state) => state.id === app.dataset.ssr);
+        const state = opts.initialState?.find(
+          (state) => state.component === app.dataset.ssrComponent
+        );
 
-        const { html, teleports } = await render$(app.dataset.ssrComponent, state?.props);
+        const { html, teleports } = await render$(app.dataset.ssrComponent, state?.data);
 
         app.innerHTML = html;
 
@@ -74,7 +77,7 @@ const fastifyVite: FastifyPluginAsync = async (fastify) => {
     // https://vitejs.dev/guide/ssr.html#setting-up-the-dev-server
     fastify.use(vite.middlewares);
   }
-  fastify.decorateReply("render", render);
+  fastify.decorate("render", render);
 };
 
 export default fp(fastifyVite);
