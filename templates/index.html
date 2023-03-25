@@ -1,5 +1,7 @@
-{% layout "layout_base" %}
+{% layout "layout-base" %}
 
 {% block %}
-<div data-ssr="counter" data-ssr-component="Counter"></div>
+<main class="container">
+  <div class="posts" data-ssr-component="Posts" />
+</main>
 {% endblock %}

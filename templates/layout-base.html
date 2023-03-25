@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" class="{{ colorScheme }}">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lexend:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    .material-symbols-sharp {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 24;
+      pointer-events: none;
+    }
+  </style>
+  <title>Home</title>
+</head>
+
+<body>
+  {% render "header" %}
+  {% block %}{% endblock %}
+  <section class="newsletter container" data-ssr-component="Newsletter"></section>
+  <footer class="footer container" data-ssr-component="TheFooter"></footer>
+  <div id="navigation-drawer"></div>
+  <script type="module" src="/src/entry-client.ts"></script>
+  {% if initialState %}
+  <script>
+    window.__PRELOADED_STATE__ = {{ initialState | json }}
+  </script>
+  {% endif %}
+</body>
+
+</html>

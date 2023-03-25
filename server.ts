@@ -2,14 +2,18 @@ import path from "path";
 import { fileURLToPath } from "url";
 import Fastify from "fastify";
 import view from "@fastify/view";
+import cookie from "@fastify/cookie";
 import fastifyStatic from "@fastify/static";
 import { Liquid } from "liquidjs";
-import fastifyVite from "./plugins/fastify-vite.js";
+import fastifyVite from "./plugins/fastifyVite.js";
+import preHandler from "./plugins/preHandler.js";
+import blog from "./routes/blog.js";
 import { PROD } from "./constants/index.js";
-import { getTemplatePath } from "./decorators/index.js";
+import getTemplatePath from "./decorators/getTemplatePath.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const fastify = Fastify({ logger: false });
 
 // plugins (from the Fastify ecosystem)
 fastify.register(view, {
@@ -32,35 +36,14 @@ if (PROD) {
   fastify.register(import("@fastify/middie"));
 }
 
+fastify.register(cookie);
+
 // your plugins (your custom plugins)
 fastify.register(fastifyVite);
+fastify.register(preHandler);
+fastify.register(blog);
 
 // decorators
-fastify.decorateReply(getTemplatePath.name, getTemplatePath);
-
-// hooks
-
-// your services
-fastify.get("/", async (request, reply) => {
-  const initialState = [{ id: "counter", props: { count: 24 } }];
-
-  try {
-    let template: string | undefined = await fastify.view(
-      reply.getTemplatePath("index.html"),
-      { initialState }
-    );
-
-    template = await reply.render({
-      url: request.url,
-      template,
-      initialState,
-    });
-
-    reply.status(200).header("Content-Type", "text/html").send(template);
-  } catch (e) {
-    console.error(e);
-  }
-});
 fastify.decorate(getTemplatePath.name, getTemplatePath);
 
 try {

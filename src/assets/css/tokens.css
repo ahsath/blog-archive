@@ -1,0 +1,222 @@
+:root {
+  --md-sys-color-scheme: normal;
+  color-scheme: var(--md-sys-color-scheme);
+  /* primary */
+  --md-ref-palette-primary40: 194 100% 26%;
+  --md-ref-palette-primary80: 199 100% 72%;
+  /* secondary */
+  --md-ref-palette-secondary90: 202 59% 88%;
+  /* tertiary */
+  /* error */
+  /* neutral */
+  /* --md-ref-palette-neutral10: #191c1e; */
+  --md-ref-palette-neutral99: #fbfcfe;
+  /* neutral-variant */
+  --md-ref-palette-neutral-variant0: #000000;
+  --d: 208 23% 89%;
+  /* typography */
+  --md-ref-typeface-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --md-ref-typeface-brand: "Archivo Black";
+  --md-ref-typeface-plain: Lexend;
+  --md-ref-typeface-font-family-brand: var(--md-ref-typeface-brand),
+    var(--md-ref-typeface-font-sans);
+  --md-ref-typeface-font-family-plain: var(--md-ref-typeface-plain),
+    var(--md-ref-typeface-font-sans);
+  /* shape */
+  --md-sys-shape-corner-medium: 0.75rem; /* 12px */
+  --md-sys-shape-corner-large-end: 0px 1rem 1rem 0px;
+  --md-sys-shape-corner-large-top: 1rem 1rem 0px 0px;
+  --md-sys-shape-corner-full: 9999px;
+  /* easing */
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  /* duration */
+  /* TODO: remove unused durations */
+  --md-sys-motion-duration-short4: 0.2s;
+  --md-sys-motion-duration-medium1: 0.25s;
+  --md-sys-motion-duration-medium2: 0.3s;
+  --md-sys-motion-duration-long2: 0.5s;
+  /* elevation (z-index) */
+  /* TODO: Remove unused elevation levels */
+  --md-sys-elevation-level0: 0;
+  --md-sys-elevation-level1: 1;
+  --md-sys-elevation-level2: 3;
+  --md-sys-elevation-level3: 6;
+  --md-sys-elevation-level4: 8;
+  --md-sys-elevation-level5: 12;
+  /* hover state layer opacity */
+  --md-sys-state-hover-state-layer-opacity: 0.08;
+  --md-sys-state-focus-state-layer-opacity: 0.12;
+  --md-sys-state-pressed-state-layer-opacity: var(--md-sys-state-focus-state-layer-opacity);
+  /* elevation (surfaces opacity) */
+  --md-ref-elevation1: 0.05;
+  --md-ref-elevation2: var(--md-sys-state-hover-state-layer-opacity);
+  /* light */
+  --md-sys-color-primary-light: hsl(var(--md-ref-palette-primary40));
+  --md-sys-color-on-primary-light: 0 0% 100%;
+  --md-sys-color-primary-container-light: #eaddff;
+  --md-sys-color-on-primary-container-light: #21005d;
+  --md-sys-color-secondary-light: #625b71;
+  --md-sys-color-on-secondary-light: #ffffff;
+  --md-sys-color-secondary-container-light: var(--md-ref-palette-secondary90);
+  --md-sys-color-on-secondary-container-light: 198 63% 9%;
+  --md-sys-color-tertiary-light: #7d5260;
+  --md-sys-color-on-tertiary-light: #ffffff;
+  --md-sys-color-tertiary-container-light: #ffd8e4;
+  --md-sys-color-on-tertiary-container-light: #31111d;
+  --md-sys-color-error-light: #ba1a1a;
+  --md-sys-color-on-error-light: #ffffff;
+  --md-sys-color-error-container-light: #f9dedc;
+  --md-sys-color-on-error-container-light: #410e0b;
+  --md-sys-color-outline-light: #71787d;
+  --md-sys-color-background-light: #fbfcfe;
+  --md-sys-color-on-background-light: #1c1b1f;
+  --md-sys-color-surface-light: 220 60% 99%;
+  --md-sys-color-on-surface-light: 204 9% 11%;
+  --md-sys-color-surface-variant-light: #dce3e9;
+  --md-sys-color-on-surface-variant-light: 200 9% 27%;
+  --md-sys-color-inverse-surface-light: #313033;
+  --md-sys-color-inverse-on-surface-light: #f4eff4;
+  --md-sys-color-surface1-light: hsl(var(--md-ref-palette-primary40) / var(--md-ref-elevation1));
+  --md-sys-color-surface2-light: hsl(var(--md-ref-palette-primary40) / var(--md-ref-elevation2));
+  --md-sys-color-inverse-primary-light: #d0bcff;
+  --md-sys-color-shadow-light: #000000;
+  --md-sys-color-outline-variant-light: #c0c7cd;
+  /* dark */
+  --md-sys-color-primary-dark: hsl(var(--md-ref-palette-primary80));
+  --md-sys-color-on-primary-dark: 195 100% 14%;
+  --md-sys-color-primary-container-dark: #4f378b;
+  --md-sys-color-on-primary-container-dark: #eaddff;
+  --md-sys-color-secondary-dark: #ccc2dc;
+  --md-sys-color-on-secondary-dark: #332d41;
+  --md-sys-color-secondary-container-dark: 202 22% 27%;
+  --md-sys-color-on-secondary-container-dark: var(--md-ref-palette-secondary90);
+  --md-sys-color-tertiary-dark: #efb8c8;
+  --md-sys-color-on-tertiary-dark: #492532;
+  --md-sys-color-tertiary-container-dark: #633b48;
+  --md-sys-color-on-tertiary-container-dark: #ffd8e4;
+  --md-sys-color-error-dark: #ffb4ab;
+  --md-sys-color-on-error-dark: #601410;
+  --md-sys-color-error-container-dark: #8c1d18;
+  --md-sys-color-on-error-container-dark: #f9dedc;
+  --md-sys-color-outline-dark: #8a9297;
+  --md-sys-color-background-dark: #191c1e;
+  --md-sys-color-on-background-dark: #e1e2e5;
+  --md-sys-color-surface-dark: 204 9% 11%;
+  --md-sys-color-on-surface-dark: 225 7% 89%;
+  --md-sys-color-surface-variant-dark: #40484c;
+  --md-sys-color-on-surface-variant-dark: 208 12% 78%;
+  --md-sys-color-inverse-surface-dark: #e6e1e5;
+  --md-sys-color-inverse-on-surface-dark: #313033;
+  --md-sys-color-surface1-dark: hsl(var(--md-ref-palette-primary80) / var(--md-ref-elevation1));
+  --md-sys-color-surface2-dark: hsl(var(--md-ref-palette-primary80) / var(--md-ref-elevation2));
+  --md-sys-color-inverse-primary-dark: #6750a4;
+  --md-sys-color-shadow-dark: #000000;
+  --md-sys-color-outline-variant-dark: #40484c;
+  /* display - large */
+  --md-sys-typescale-display-large-font-family-name: var(--md-ref-typeface-font-family-plain);
+  --md-sys-typescale-display-large-font-family-style: Regular;
+  --md-sys-typescale-display-large-font-weight: 400px;
+  --md-sys-typescale-display-large-font-size: 57px;
+  --md-sys-typescale-display-large-line-height: 64px;
+  --md-sys-typescale-display-large-letter-spacing: -0.25px;
+  /* display - medium */
+  --md-sys-typescale-display-medium-font-family-name: var(--md-ref-typeface-font-family-brand);
+  --md-sys-typescale-display-medium-font-family-style: Regular;
+  --md-sys-typescale-display-medium-font-weight: 400px;
+  --md-sys-typescale-display-medium-font-size: 45px;
+  --md-sys-typescale-display-medium-line-height: 52px;
+  --md-sys-typescale-display-medium-letter-spacing: 0px;
+  /* display - small */
+  --md-sys-typescale-display-small-font-family-name: var(--md-ref-typeface-font-family-brand);
+  --md-sys-typescale-display-small-font-family-style: Regular;
+  --md-sys-typescale-display-small-font-weight: 400;
+  --md-sys-typescale-display-small-font-size: 36px;
+  --md-sys-typescale-display-small-line-height: 44px;
+  --md-sys-typescale-display-small-letter-spacing: 0px;
+  /* headline - large */
+  --md-sys-typescale-headline-large-font-family-name: var(--md-ref-typeface-font-family-brand);
+  --md-sys-typescale-headline-large-font-family-style: Regular;
+  --md-sys-typescale-headline-large-font-weight: 400;
+  --md-sys-typescale-headline-large-font-size: 32px;
+  --md-sys-typescale-headline-large-line-height: 40px;
+  --md-sys-typescale-headline-large-letter-spacing: 0px;
+  /* headline - medium */
+  --md-sys-typescale-headline-medium-font-family-name: var(--md-ref-typeface-font-family-brand);
+  --md-sys-typescale-headline-medium-font-family-style: Regular;
+  --md-sys-typescale-headline-medium-font-weight: 400;
+  --md-sys-typescale-headline-medium-font-size: 28px;
+  --md-sys-typescale-headline-medium-line-height: 36px;
+  --md-sys-typescale-headline-medium-letter-spacing: 0px;
+  /* headline - small */
+  --md-sys-typescale-headline-small-font-family-name: var(--md-ref-typeface-font-family-brand);
+  --md-sys-typescale-headline-small-font-family-style: Regular;
+  --md-sys-typescale-headline-small-font-weight: 400px;
+  --md-sys-typescale-headline-small-font-size: 24px;
+  --md-sys-typescale-headline-small-line-height: 32px;
+  --md-sys-typescale-headline-small-letter-spacing: 0px;
+  /* body - large */
+  --md-sys-typescale-body-large-font-family-name: var(--md-ref-typeface-font-family-plain);
+  --md-sys-typescale-body-large-font-family-style: Regular;
+  --md-sys-typescale-body-large-font-weight: 400;
+  --md-sys-typescale-body-large-font-size: 16px;
+  --md-sys-typescale-body-large-line-height: 24px;
+  --md-sys-typescale-body-large-letter-spacing: 0.5px;
+  /* body - medium */
+  --md-sys-typescale-body-medium-font-family-name: var(--md-ref-typeface-font-family-plain);
+  --md-sys-typescale-body-medium-font-family-style: Regular;
+  --md-sys-typescale-body-medium-font-weight: 400;
+  --md-sys-typescale-body-medium-font-size: 14px;
+  --md-sys-typescale-body-medium-line-height: 20px;
+  --md-sys-typescale-body-medium-letter-spacing: 0.25px;
+  /* body - small */
+  --md-sys-typescale-body-small-font-family-name: var(--md-ref-typeface-font-family-plain);
+  --md-sys-typescale-body-small-font-family-style: Regular;
+  --md-sys-typescale-body-small-font-weight: 400;
+  --md-sys-typescale-body-small-font-size: 12px;
+  --md-sys-typescale-body-small-line-height: 16px;
+  --md-sys-typescale-body-small-letter-spacing: 0.4px;
+  /* label - large */
+  --md-sys-typescale-label-large-font-family-name: var(--md-ref-typeface-font-family-plain);
+  --md-sys-typescale-label-large-font-family-style: Medium;
+  --md-sys-typescale-label-large-font-weight: 500;
+  --md-sys-typescale-label-large-font-size: 14px;
+  --md-sys-typescale-label-large-line-height: 20px;
+  --md-sys-typescale-label-large-letter-spacing: 0.1px;
+  /* label - medium */
+  --md-sys-typescale-label-medium-font-family-name: var(--md-ref-typeface-font-family-plain);
+  --md-sys-typescale-label-medium-font-family-style: Medium;
+  --md-sys-typescale-label-medium-font-weight: 500;
+  --md-sys-typescale-label-medium-font-size: 12px;
+  --md-sys-typescale-label-medium-line-height: 16px;
+  --md-sys-typescale-label-medium-letter-spacing: 0.5px;
+  /* label - small */
+  --md-sys-typescale-label-small-font-family-name: var(--md-ref-typeface-font-family-plain);
+  --md-sys-typescale-label-small-font-family-style: Medium;
+  --md-sys-typescale-label-small-font-weight: 500;
+  --md-sys-typescale-label-small-font-size: 11px;
+  --md-sys-typescale-label-small-line-height: 16px;
+  --md-sys-typescale-label-small-letter-spacing: 0.5px;
+  /* title - large */
+  --md-sys-typescale-title-large-font-family-name: var(--md-ref-typeface-font-family-brand);
+  --md-sys-typescale-title-large-font-family-style: Regular;
+  --md-sys-typescale-title-large-font-weight: 400;
+  --md-sys-typescale-title-large-font-size: 22px;
+  --md-sys-typescale-title-large-line-height: 28px;
+  --md-sys-typescale-title-large-letter-spacing: 0px;
+  /* title - medium */
+  --md-sys-typescale-title-medium-font-family-name: var(--md-ref-typeface-font-family-brand);
+  --md-sys-typescale-title-medium-font-family-style: Medium;
+  --md-sys-typescale-title-medium-font-weight: 500;
+  --md-sys-typescale-title-medium-font-size: 16px;
+  --md-sys-typescale-title-medium-line-height: 24px;
+  --md-sys-typescale-title-medium-letter-spacing: 0.15px;
+  /* title - small */
+  --md-sys-typescale-title-small-font-family-name: var(--md-ref-typeface-font-family-brand);
+  --md-sys-typescale-title-small-font-family-style: Regular;
+  --md-sys-typescale-title-small-font-weight: 400;
+  --md-sys-typescale-title-small-font-size: 14px;
+  --md-sys-typescale-title-small-line-height: 20px;
+  --md-sys-typescale-title-small-letter-spacing: 0.1px;
+}

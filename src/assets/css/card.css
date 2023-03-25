@@ -1,0 +1,70 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: hsl(var(--md-sys-color-on-surface-variant));
+  background: var(--md-sys-color-surface1);
+  padding: 1rem;
+  border-radius: var(--md-sys-shape-corner-medium);
+  position: relative;
+  max-width: 22.5rem;
+}
+
+.card:where(:focus, :focus-visible)::before {
+  outline: 0.125rem solid hsl(var(--md-sys-color-on-surface-variant));
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--md-sys-shape-corner-medium);
+  transition: all var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-emphasized);
+}
+
+.card:hover::before {
+  background: hsl(var(--md-sys-color-on-surface) / var(--md-sys-state-hover-state-layer-opacity));
+}
+
+.card:focus::before {
+  background: hsl(var(--md-sys-color-on-surface) / var(--md-sys-state-focus-state-layer-opacity));
+}
+
+.card:focus::before {
+  background: hsl(var(--md-sys-color-on-surface) / var(--md-sys-state-pressed-state-layer-opacity));
+}
+
+.card__headline {
+  font-family: var(--md-sys-typescale-title-large-font-family-name);
+  font-style: var(--md-sys-typescale-title-large-font-family-style);
+  font-weight: var(--md-sys-typescale-title-large-font-weight);
+  font-size: var(--md-sys-typescale-title-large-font-size);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+  letter-spacing: var(--md-sys-typescale-title-large-letter-spacing);
+  color: hsl(var(--md-sys-color-on-surface));
+}
+
+.card__image {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.card__subhead {
+  font-family: var(--md-sys-typescale-body-medium-font-family-name);
+  font-style: var(--md-sys-typescale-body-medium-font-family-style);
+  font-weight: var(--md-sys-typescale-body-medium-font-weight);
+  font-size: var(--md-sys-typescale-body-medium-font-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  letter-spacing: var(--md-sys-typescale-body-medium-letter-spacing);
+}
+
+.card__text {
+  font-family: var(--md-sys-typescale-body-large-font-family-name);
+  font-style: var(--md-sys-typescale-body-large-font-family-style);
+  font-weight: var(--md-sys-typescale-body-large-font-weight);
+  font-size: var(--md-sys-typescale-body-large-font-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+  letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+  margin: 0;
+}
