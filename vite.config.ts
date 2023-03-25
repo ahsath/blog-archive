@@ -13,7 +13,7 @@ export default defineConfig({
         "templates/index.html",
         "templates/layout-base.html",
         "templates/header.html",
-        "template/article.html",
+        "templates/article.html",
       ], // TODO: dinamically generate this
     },
   },
