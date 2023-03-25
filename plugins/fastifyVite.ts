@@ -1,11 +1,10 @@
 import { createServer, ViteDevServer } from "vite";
 import { JSDOM } from "jsdom";
-import { FastifyPluginAsync } from "fastify";
+import type { FastifyPluginCallback } from "fastify";
 import fp from "fastify-plugin";
 import { Render } from "../src/entry-server";
 import { Data } from "../src/main";
-
-const isProd = process.env.NODE_ENV === "production";
+import { PROD } from "../constants/index.js";
 
 export interface RenderOpts {
   url: string;
@@ -18,7 +17,7 @@ export interface RenderOpts {
 
 let vite: ViteDevServer;
 
-if (!isProd) {
+if (!PROD) {
   vite = await createServer({
     server: { middlewareMode: true },
     appType: "custom",
@@ -30,7 +29,7 @@ let render$: Render;
 
 async function render(opts: RenderOpts) {
   try {
-    if (isProd) {
+    if (PROD) {
       // @ts-ignore
       render$ = (await import("../dist/server/entry-server.js")).render;
       template = opts.template;
@@ -71,13 +70,14 @@ async function render(opts: RenderOpts) {
   }
 }
 
-const fastifyVite: FastifyPluginAsync = async (fastify) => {
-  if (!isProd) {
+const fastifyVite: FastifyPluginCallback = (fastify, opts, done) => {
+  if (!PROD) {
     // use vite's connect instance as middleware
     // https://vitejs.dev/guide/ssr.html#setting-up-the-dev-server
     fastify.use(vite.middlewares);
   }
   fastify.decorate("render", render);
+  done();
 };
 
 export default fp(fastifyVite);

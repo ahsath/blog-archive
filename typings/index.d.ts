@@ -1,10 +1,20 @@
-import type { RenderOpts } from "../plugins/fastify-vite";
+import type { RenderOpts } from "../plugins/fastifyVite";
 import type { Data } from "../src/main";
 
 declare module "fastify" {
   interface FastifyInstance {
-    render: (opts: RenderOpts) => Promise<string | undefined>;
+    render: (opts: RenderOpts) => Promise<string>;
     getTemplatePath: (template?: string) => string;
+  }
+
+  interface FastifyRequest {
+    baseState: {
+      colorScheme: string | undefined;
+      state: {
+        component: string;
+        data: Data;
+      };
+    };
   }
 }
 
