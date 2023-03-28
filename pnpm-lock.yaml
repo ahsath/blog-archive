@@ -9,8 +9,8 @@ specifiers:
   '@types/jsdom': ^20.0.1
   '@types/node': ^18.11.17
   '@vitejs/plugin-vue': ^4.0.0
-  '@vuelidate/core': ^2.0.0
-  '@vuelidate/validators': ^2.0.0
+  '@vuelidate/core': ^2.0.1
+  '@vuelidate/validators': ^2.0.1
   '@vueuse/components': ^9.13.0
   '@vueuse/core': ^9.12.0
   '@vueuse/integrations': ^9.13.0
@@ -32,8 +32,8 @@ dependencies:
   '@fastify/middie': 8.1.0
   '@fastify/static': 6.6.0
   '@fastify/view': 7.3.0
-  '@vuelidate/core': 2.0.0_vue@3.2.45
-  '@vuelidate/validators': 2.0.0_vue@3.2.45
+  '@vuelidate/core': 2.0.1_vue@3.2.45
+  '@vuelidate/validators': 2.0.1_vue@3.2.45
   '@vueuse/components': 9.13.0_vue@3.2.45
   '@vueuse/core': 9.12.0_vue@3.2.45
   '@vueuse/integrations': 9.13.0_bosdvb2m7zdcbc7djesdk2g7oq
@@ -641,8 +641,8 @@ packages:
   /@vue/shared/3.2.45:
     resolution: {integrity: sha512-Ewzq5Yhimg7pSztDV+RH1UDKBzmtqieXQlpTVm2AwraoRL/Rks96mvd8Vgi7Lj+h+TH8dv7mXD3FRZR3TUvbSg==}
 
-  /@vuelidate/core/2.0.0_vue@3.2.45:
-    resolution: {integrity: sha512-xIFgdQlScO0aaSZ0wTGPJh8YcTMNAj5veI8yPgiAyxOT+GV7vNQFiU1vpYWCL4cklkkhYvRRSC2OEX7YOZNmPQ==}
+  /@vuelidate/core/2.0.1_vue@3.2.45:
+    resolution: {integrity: sha512-seBfM7ZtQ+NzXEdJpwLPgX/GlY+R10VI3FSoXyEJH7p4kKcz06f5oloh2EDozCJVMxP0Um/FFcfjBCn8CtGNOQ==}
     peerDependencies:
       '@vue/composition-api': ^1.0.0-rc.1
       vue: ^2.0.0 || >=3.0.0
@@ -654,8 +654,8 @@ packages:
       vue-demi: 0.13.11_vue@3.2.45
     dev: false
 
-  /@vuelidate/validators/2.0.0_vue@3.2.45:
-    resolution: {integrity: sha512-fQQcmDWfz7pyH5/JPi0Ng2GEgNK1pUHn/Z/j5rG/Q+HwhgIXvJblTPcZwKOj1ABL7V4UVuGKECvZCDHNGOwdrg==}
+  /@vuelidate/validators/2.0.1_vue@3.2.45:
+    resolution: {integrity: sha512-rlu14xo+r36ri2VMY6kLLgzIc3RKEIEKiyq/Nwvft3h8izt6jcBqOlDPkQL1d9qxn9mr2nVBcNlMBFMDrHpp/A==}
     peerDependencies:
       '@vue/composition-api': ^1.0.0-rc.1
       vue: ^2.0.0 || >=3.0.0
