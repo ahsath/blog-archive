@@ -1,13 +1,14 @@
 # syntax=docker/dockerfile:1
 FROM node:18-slim
 
+ENV NODE_ENV=production
+
 WORKDIR /app/
 
 COPY . .
 
 RUN npm i -g pnpm && pnpm i && pnpm build
-RUN cd backend && yarn
-RUN NODE_ENV=production && yarn build 
+RUN cd backend && yarn && yarn build 
 
 EXPOSE 3000
 
