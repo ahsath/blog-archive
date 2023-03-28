@@ -6,6 +6,7 @@ WORKDIR /app/
 COPY . .
 
 RUN npm i -g pnpm && pnpm i && pnpm build
+RUN cd backend && yarn && yarn build
 
 EXPOSE 3000
 
