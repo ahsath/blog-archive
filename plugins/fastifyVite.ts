@@ -2,8 +2,8 @@ import { createServer, ViteDevServer } from "vite";
 import { JSDOM } from "jsdom";
 import type { FastifyPluginCallback } from "fastify";
 import fp from "fastify-plugin";
-import { Render } from "../src/entry-server";
-import { Data } from "../src/main";
+import type { Render } from "../src/entry-server";
+import type { Data } from "../src/main";
 import { PROD } from "../constants/index.js";
 
 export interface RenderOpts {

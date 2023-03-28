@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
 
-async function blog(fastify: FastifyInstance) {
+export default async function blog(fastify: FastifyInstance) {
   fastify.get("/", async (req, reply) => {
     const initialState = [req.baseState.state];
 
@@ -22,5 +22,3 @@ async function blog(fastify: FastifyInstance) {
     }
   });
 }
-
-export default blog;

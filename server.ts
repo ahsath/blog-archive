@@ -1,5 +1,4 @@
 import path from "path";
-import { fileURLToPath } from "url";
 import Fastify from "fastify";
 import view from "@fastify/view";
 import cookie from "@fastify/cookie";
@@ -7,14 +6,12 @@ import fastifyStatic from "@fastify/static";
 import { Liquid } from "liquidjs";
 import fastifyVite from "./plugins/fastifyVite.js";
 import preHandler from "./plugins/preHandler.js";
-import blog from "./routes/blog.js";
-import { PROD } from "./constants/index.js";
+import { PROD, __dirname } from "./constants/index.js";
 import getTemplatePath from "./decorators/getTemplatePath.js";
+import blog from "./routes/blog.js";
 import admin from "./routes/admin.js";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const fastify = Fastify({ logger: false });
+const fastify = Fastify({ logger: true });
 
 // plugins (from the Fastify ecosystem)
 fastify.register(view, {
