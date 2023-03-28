@@ -1,7 +1,10 @@
+import path from "path";
 import { join } from "path";
+import { fileURLToPath } from "url";
 import { FastifyInstance } from "fastify";
 import fastifyStatic from "@fastify/static";
-import { __dirname } from "../constants/index.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default async function admin(fastify: FastifyInstance) {
   fastify.register(fastifyStatic, {
