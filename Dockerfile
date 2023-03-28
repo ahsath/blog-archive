@@ -1,15 +1,12 @@
 # syntax=docker/dockerfile:1
 FROM node:18-slim
 
-WORKDIR /app
+WORKDIR /app/
 
-COPY package.json .
-COPY pnpm-lock.yaml .
 COPY . .
 
-RUN npm i -g pnpm
-RUN pnpm i
-RUN pnpm build
+RUN npm i -g pnpm && pnpm i && pnpm build
+RUN cd backend && npm i -g yarn && yarn build
 
 EXPOSE 3000
 
