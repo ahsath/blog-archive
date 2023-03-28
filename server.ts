@@ -10,6 +10,7 @@ import preHandler from "./plugins/preHandler.js";
 import blog from "./routes/blog.js";
 import { PROD } from "./constants/index.js";
 import getTemplatePath from "./decorators/getTemplatePath.js";
+import admin from "./routes/admin.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -41,7 +42,9 @@ fastify.register(cookie);
 // your plugins (your custom plugins)
 fastify.register(fastifyVite);
 fastify.register(preHandler);
+
 fastify.register(blog);
+fastify.register(admin);
 
 // decorators
 fastify.decorate(getTemplatePath.name, getTemplatePath);
