@@ -6,7 +6,7 @@ WORKDIR /app/
 COPY . .
 
 RUN npm i -g pnpm && pnpm i && pnpm build
-RUN cd backend && yarn && NODE_ENV=production yarn build
+RUN cd backend && yarn && NODE_ENV=production APP_URL=https://octopus-app-9xbn2.ondigitalocean.app yarn build
 
 EXPOSE 3000
 
